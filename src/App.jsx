@@ -1,9 +1,10 @@
-import "./App.css";
-
 import { Component } from "react";
 import { Statistics } from "./components/Statistics/Statistics.jsx";
 import { FeedbackOptions } from "./components/FeedbackOptions/FeedbackOptions.jsx";
 import { Section } from "./components/Section/Section.jsx";
+import { Notification } from "./components/Notification/Notification.jsx";
+
+import "./App.css";
 
 class App extends Component {
   state = {
@@ -47,14 +48,19 @@ class App extends Component {
             onLeaveFeedback={this.onLeaveFeedback}
           ></FeedbackOptions>
         </Section>
+
         <Section title="Statistics">
-          <Statistics
-            good={good}
-            bad={bad}
-            neutral={neutral}
-            total={total}
-            positivePercentage={positivePercentage}
-          />
+          {total > 0 ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={positivePercentage}
+            />
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
         </Section>
       </>
     );
