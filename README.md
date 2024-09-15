@@ -1,8 +1,58 @@
-# React + Vite
+# Виджет отзывов
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Как и большинство компаний, кафе Expresso собирает отзывы от своих клиентов.
+Твоя задача - создать приложение для сбора статистики. Есть всего три варианта
+обратной связи: хорошо, нейтрально и плохо.
 
-Currently, two official plugins are available:
+## Шаг 1
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Приложение должно отображать количество собранных отзывов для каждой категории.
+Приложение не должно сохранять статистику отзывов между разными сессиями
+(обновление страницы).
+
+Состояние приложения обязательно должно быть следующего вида, добавлять новые
+свойства нельзя.
+
+```bash
+state = {
+  good: 0,
+  neutral: 0,
+  bad: 0
+}
+```
+
+Интерфейс может выглядеть так.
+
+![preview](./mockup/step-1.png)
+
+## Шаг 2
+
+Расширь функционал приложения так, чтобы в интерфейсе отображалось больше
+статистики о собранных отзывах. Добавь отображение общего количества собранных
+отзывов из всех категорий и процент положительных отзывов. Для этого создай
+вспомогательные методы `countTotalFeedback()` и
+`countPositiveFeedbackPercentage()`, подсчитывающие эти значения основываясь на
+данных в состоянии (вычисляемые данные).
+
+![preview](./mockup/step-2.png)
+
+## Шаг 3
+
+Выполни рефакторинг приложения. Состояние приложения должно оставаться в
+корневом компоненте `<App>`.
+
+- Вынеси отображение статистики в отдельный компонент
+  `<Statistics good={} neutral={} bad={} total={} positivePercentage={}>`.
+- Вынеси блок кнопок в компонент
+  `<FeedbackOptions options={} onLeaveFeedback={}>`.
+- Создай компонент `<Section title="">`, который рендерит секцию с заголовком и
+  детей (children). Оберни каждый из `<Statistics>` и `<FeedbackOptions>` в
+  созданный компонент секции.
+
+## Шаг 4
+
+Расширь функционал приложения так, чтобы блок статистики рендерился только после
+того, как был собран хотя бы один отзыв. Сообщение об отсутствиии статистики
+вынеси в компонент `<Notification message="There is no feedback">`.
+
+![preview](./mockup/preview.gif)
