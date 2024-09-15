@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/goit-react-hw-vite/",
+  base: "/goit-react-hw-02-feedback/",
   plugins: [react()],
-})
+});
