@@ -1,4 +1,5 @@
 import { Component } from "react";
+
 import { Statistics } from "./components/Statistics/Statistics.jsx";
 import { FeedbackOptions } from "./components/FeedbackOptions/FeedbackOptions.jsx";
 import { Section } from "./components/Section/Section.jsx";
