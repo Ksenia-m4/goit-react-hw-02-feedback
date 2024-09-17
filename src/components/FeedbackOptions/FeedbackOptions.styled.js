@@ -16,6 +16,7 @@ const Button = styled.button`
   padding: 10px 20px;
 
   font-size: 16px;
+  text-transform: capitalize;
 
   background-color: #5da3f7;
   color: white;
